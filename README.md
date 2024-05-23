@@ -1,6 +1,6 @@
 ## Prop-Logic-Mastery
 
-This app allow you to study your discrete math using noval questions without end!
+This app allows you to study your discrete math using noval questions without end!
 
 ### How does it work?
 
