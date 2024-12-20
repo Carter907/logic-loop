@@ -21,12 +21,8 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 @Service
 public class QuestionService {
-
     private final Logger logger = LoggerFactory.getLogger(QuestionService.class);
-    private Question current;
     private OllamaChatClient client;
-    private BlockingDeque<Question> questions = new LinkedBlockingDeque<>(5);
-
 
     @Autowired
     public QuestionService(OllamaChatClient client) {
@@ -45,40 +41,5 @@ public class QuestionService {
         Generation generation = client.call(prompt).getResult();
         return outputParser.parse(generation.getOutput().getContent());
     }
-    public void newQuestion() {
-        try {
-            if (questions.peek() != null) {
-                current = questions.takeFirst();
-            }
-        } catch (InterruptedException _) {
-            logger.error("interrupted exception");
-        }
-    }
 
-    @Async("taskExecutor")
-    public void harvestQuestions() {
-        while (true) {
-            try {
-                questions.put(promptQuestion());
-
-                logger.info("harvested question {}", questions.size());
-                logger.info("questions size: {}", questions.size());
-            } catch (InterruptedException _) {
-                logger.error("failed to harvest question");
-            }
-        }
-    }
-
-
-    public Question getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(Question current) {
-        this.current = current;
-    }
-
-    public int getTotal() {
-        return questions.size();
-    }
 }

@@ -21,33 +21,9 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
-    @PostConstruct
-    public void init() {
-        this.questionService.harvestQuestions();
-    }
-
     @PostMapping("/practice")
-    public String updateItem(
-            @ModelAttribute("question") Question question,
-            Model model
-    ) {
+    public Question updateItem() {
 
-        // Process the item here
-        // For demonstration, just add a message to the model
-        if (question.getUserChoice() != null) {
-            boolean userCorrect = question
-                    .getUserChoice()
-                    .trim()
-                    .equals(questionService.getCurrent().getCorrectAnswer());
-            model.addAttribute("userCorrect", userCorrect);
-            model.addAttribute("userAnswered", true);
-        } else {
-            model.addAttribute("userAnswered", false);
-
-        }
-
-        questionService.newQuestion();
-        model.addAttribute("question", questionService.getCurrent());
-        return "index"; // Redirect to success page
+        return new Question("test question", java.util.List.of("a","b","c"), "a");
     }
 }
