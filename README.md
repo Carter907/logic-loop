@@ -1,4 +1,4 @@
-## Prop-Logic-Mastery
+## Logic-Loop
 ---
 This app allows you to study propositional logic using noval questions without end!
 
