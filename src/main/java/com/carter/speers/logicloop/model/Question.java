@@ -1,4 +1,4 @@
-package com.carter.speers.proplogicmastery.model;
+package com.carter.speers.logicloop.model;
 
 import java.util.List;
 

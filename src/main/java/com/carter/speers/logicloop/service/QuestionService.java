@@ -1,6 +1,6 @@
-package com.carter.speers.proplogicmastery.service;
+package com.carter.speers.logicloop.service;
 
-import com.carter.speers.proplogicmastery.model.Question;
+import com.carter.speers.logicloop.model.Question;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.Generation;
@@ -9,15 +9,9 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.ollama.OllamaChatClient;
 import org.springframework.ai.parser.BeanOutputParser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.LinkedBlockingDeque;
 
 @Service
 public class QuestionService {
