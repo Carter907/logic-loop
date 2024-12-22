@@ -21,6 +21,6 @@ public class QuestionController {
 
     @GetMapping("/question")
     public Question getQuestion() {
-        return new Question("test question", List.of("A", "B", "C"), "A");
+        return questionService.promptQuestion();
     }
 }

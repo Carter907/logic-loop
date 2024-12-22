@@ -26,7 +26,9 @@ public class QuestionService {
     public Question promptQuestion() {
         logger.info("crafting question...");
         String promptText = """
-        Generate a Propositional Logic question with 4 answer choices and a correct answer
+        Generate a Propositional Logic question with 4 answer choices and a correct answer.
+        Do not include any explanations, only provide a RFC8259 compliant JSON response following this format without deviation.\s
+        Remove the ```json markdown surrounding the output including the trailing "```"
         {format}
         """;
         var outputParser = new BeanOutputParser<>(Question.class);
